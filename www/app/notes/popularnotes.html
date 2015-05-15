@@ -1,15 +1,17 @@
 <ion-view view-title="پر بیننده ترین های امروز" ng-controller="PopularNotesCtrl as popularnotes">
   <ion-content class="padding">
-    <ion-refresher on-refresh="popularnotes.doRefresh()"></ion-refresher>
+<!--    <div class="title" ng-show="!popularnotes.Notes.length">در حال موردی برای این کلینیک ثبت نگردیده است</div>-->
+    <ion-refresher pulling-text="بکشید و رها کنید" on-refresh="popularnotes.doRefresh()"></ion-refresher>
     <ion-list>
-      <ion-item ng-repeat='popularnote in popularnotes.Notes' class="item-thumbnail-right item-text-wrap" href="#/app/note/{{popularnote.Id}}">
+      <ion-item ng-show="popularnotes.Notes.length" ng-repeat='popularnote in popularnotes.Notes' class="item-thumbnail-right item-text-wrap"
+      href="#/app/note/{{popularnote.Id}}">
         <img ng-src="{{popularnote.Image}}" alt="{{popularnote.Name}} Photo">
         <h3 class="positive">{{popularnote.Name | limitTo:30}} {{popularnote.Name.length > 30 ? '&hellip;' : ''}}</h3>
         <p>{{popularnote.Description | limitTo: 100}} {{ popularnote.Description.length > 150 ? '&hellip;' : '' }}</p>
         </a>
       </ion-item>
     </ion-list>
-    <ion-infinite-scroll on-infinite="popularnotes.loadData()" distance="1%"></ion-infinite-scroll>
+    <ion-infinite-scroll ng-if="hasMoreData" on-infinite="popularnotes.loadData()" distance="1%"></ion-infinite-scroll>
   </ion-content>
   <div class="bar bar-subfooter row">
     <div class="tabs-striped">

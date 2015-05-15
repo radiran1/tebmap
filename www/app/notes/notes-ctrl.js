@@ -15,7 +15,7 @@
 			Sort: "",
 			SortType: "desc"
 		};
-
+		$scope.hasMoreData = true;
 		notes.loadData = function () {
 			if (notes.Notes.length == 0) {
 				console.log("First Request" + JSON.stringify(initRequest));
@@ -24,6 +24,14 @@
 					notes.Take = data.Take;
 					notes.Skip = data.Skip;
 					notes.TotalItems = data.TotalItems;
+					if (notes.Notes == null) {
+						console.log("False");
+						$scope.hasMoreData = false;
+
+					} else if (notes.Notes != null) {
+						console.log("True");
+						$scope.hasMoreData = true;
+					}
 					$scope.$broadcast('scroll.infiniteScrollComplete');
 					notes.Skip = notes.Skip + 1;
 				});
@@ -46,6 +54,8 @@
 						$scope.$broadcast('scroll.infiniteScrollComplete');
 						notes.Skip = notes.Skip + 1;
 					});
+				} else if (((noteRequest.Skip * noteRequest.Take) >= notes.TotalItems)) {
+					$scope.hasMoreData = false;
 				}
 			}
 		};

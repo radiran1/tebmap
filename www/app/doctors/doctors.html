@@ -1,15 +1,17 @@
 <ion-view view-title="پزشکان" ng-controller="DoctorsCtrl as doctors">
   <ion-content class="padding">
-    <ion-refresher on-refresh="doctors.doRefresh()"></ion-refresher>
+    <div class="title" ng-show="!doctors.Doctors.length">در حال حاضر پزشکی برای این کلینیک ثبت نگردیده است</div>
+    <ion-refresher pulling-text="بکشید و رها کنید" on-refresh="doctors.doRefresh()"></ion-refresher>
     <ion-list>
-      <ion-item ng-repeat='doctor in doctors.Doctors' class="item-thumbnail-left item-text-wrap" href="#/app/doctor/{{doctor.Id}}">
+      <ion-item ng-show="doctors.Doctors.length" ng-repeat='doctor in doctors.Doctors' class="item-thumbnail-left item-text-wrap"
+      href="#/app/doctor/{{doctor.Id}}">
         <img ng-src="{{doctor.Avatar}}" alt="{{doctor.FullName}}">
         <h2 class="positive">{{doctor.FullName}}</h2>
         <br/>
         <h3>{{doctor.SpecialityName}}</h3>
       </ion-item>
     </ion-list>
-    <ion-infinite-scroll on-infinite="doctors.loadData()" distance="1%"></ion-infinite-scroll>
+    <ion-infinite-scroll ng-if="hasMoreData" on-infinite="doctors.loadData()" icon="ion-loading-c" distance="1%"></ion-infinite-scroll>
   </ion-content>
   <div class="bar bar-subfooter row">
     <div class="tabs-striped">

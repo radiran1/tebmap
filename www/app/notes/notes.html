@@ -1,8 +1,9 @@
 <ion-view view-title="اخبار و مطالب" ng-controller="NotesCtrl as notes">
   <ion-content class="padding">
-    <ion-refresher on-refresh="notes.doRefresh()"></ion-refresher>
+    <!--<div class="title" ng-hide="notes.Notes.length">در حال موردی برای این کلینیک ثبت نگردیده است</div>-->
+    <ion-refresher pulling-text="بکشید و رها کنید" on-refresh="notes.doRefresh()"></ion-refresher>
     <div class="list">
-      <div ng-repeat="note in notes.Notes">
+      <div ng-show="notes.Notes.length" ng-repeat="note in notes.Notes">
         <a href="#/app/note/{{note.Id}}" class="item item-thumbnail-right item-text-wrap">
           <img ng-src="{{note.Image}}" alt="{{note.Name}} Photo">
           <h3 class="positive">{{note.Name | limitTo:30}}
@@ -12,7 +13,7 @@
             </a>
       </div>
     </div>
-    <ion-infinite-scroll on-infinite="notes.loadData()" distance="1%"></ion-infinite-scroll>
+    <ion-infinite-scroll ng-if="hasMoreData" on-infinite="notes.loadData()" distance="1%"></ion-infinite-scroll>
   </ion-content>
   <div class="bar bar-subfooter row">
     <div class="tabs-striped">

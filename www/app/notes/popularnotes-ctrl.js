@@ -17,7 +17,7 @@
 			Sort: "click",
 			SortType: "desc"
 		};
-
+		$scope.hasMoreData = true;
 		popularnotes.loadData = function () {
 			if (popularnotes.Notes.length == 0) {
 				console.log("First Request" + JSON.stringify(initRequest));
@@ -26,6 +26,12 @@
 					popularnotes.Take = data.Take;
 					popularnotes.Skip = data.Skip;
 					popularnotes.TotalItems = data.TotalItems;
+					if (popularnotes.Notes == null) {
+						$scope.hasMoreData = false;
+
+					} else if (popularnotes.Notes != null) {
+						$scope.hasMoreData = true;
+					}
 					$scope.$broadcast('scroll.infiniteScrollComplete');
 					popularnotes.Skip = popularnotes.Skip + 1;
 				});
@@ -48,6 +54,8 @@
 						$scope.$broadcast('scroll.infiniteScrollComplete');
 						popularnotes.Skip = popularnotes.Skip + 1;
 					});
+				} else if (((noteRequest.Skip * noteRequest.Take) >= popularnotes.TotalItems)) {
+					$scope.hasMoreData = false;
 				}
 			}
 		};

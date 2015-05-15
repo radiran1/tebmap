@@ -4,7 +4,6 @@
 	function DoctorsCtrl($stateParams, $scope, tebmapApi) {
 		var doctors = this;
 		doctors.ClinicId = Number($stateParams.clinicId);
-
 		doctors.Doctors = [];
 
 		var initRequest = {
@@ -15,7 +14,7 @@
 			Sort: "",
 			SortType: "desc"
 		};
-
+		$scope.hasMoreData = true;
 		doctors.loadData = function () {
 			if (doctors.Doctors.length == 0) {
 				console.log("First Request" + JSON.stringify(initRequest));
@@ -24,6 +23,12 @@
 					doctors.Take = data.Take;
 					doctors.Skip = data.Skip;
 					doctors.TotalItems = data.TotalItems;
+					if (doctors.Doctors == null) {
+						$scope.hasMoreData = false;
+
+					} else if (doctors.Doctors != null) {
+						$scope.hasMoreData = true;
+					}
 					$scope.$broadcast('scroll.infiniteScrollComplete');
 					doctors.Skip = doctors.Skip + 1;
 				});
@@ -46,6 +51,8 @@
 						$scope.$broadcast('scroll.infiniteScrollComplete');
 						doctors.Skip = doctors.Skip + 1;
 					});
+				} else if (((doctorsRequest.Skip * doctorsRequest.Take) >= doctors.TotalItems)) {
+					$scope.hasMoreData = false;
 				}
 			}
 		};

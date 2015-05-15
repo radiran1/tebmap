@@ -15,7 +15,7 @@
 			Sort: "",
 			SortType: "desc"
 		};
-
+		$scope.hasMoreData = true;
 		questions.loadData = function () {
 			if (questions.Questions.length == 0) {
 				console.log("First Request" + JSON.stringify(initRequest));
@@ -24,6 +24,12 @@
 					questions.Take = data.Take;
 					questions.Skip = data.Skip;
 					questions.TotalItems = data.TotalItems;
+					if (questions.Questions == null) {
+						$scope.hasMoreData = false;
+
+					} else if (questions.Questions != null) {
+						$scope.hasMoreData = true;
+					}
 					$scope.$broadcast('scroll.infiniteScrollComplete');
 					questions.Skip = questions.Skip + 1;
 				});
@@ -46,6 +52,8 @@
 						$scope.$broadcast('scroll.infiniteScrollComplete');
 						questions.Skip = questions.Skip + 1;
 					});
+				} else if (((questionRequest.Skip * questionRequest.Take) >= questions.TotalItems)) {
+					$scope.hasMoreData = false;
 				}
 			}
 		};
