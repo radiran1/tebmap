@@ -1,0 +1,30 @@
+<ion-view view-title="اخبار و مطالب" ng-controller="NotesCtrl as notes">
+  <ion-content class="padding">
+    <ion-refresher on-refresh="notes.doRefresh()"></ion-refresher>
+    <div class="list">
+      <div ng-repeat="note in notes.Notes">
+        <a href="#/app/note/{{note.Id}}" class="item item-thumbnail-right item-text-wrap">
+          <img ng-src="{{note.Image}}" alt="{{note.Name}} Photo">
+          <h3 class="positive">{{note.Name | limitTo:30}}
+            {{note.Name.length > 30 ? '&hellip;' : ''}}</h3>
+            <p>{{note.Description | limitTo: 100}}
+              {{ note.Description.length > 150 ? '&hellip;' : '' }}</p>
+            </a>
+      </div>
+    </div>
+    <ion-infinite-scroll on-infinite="notes.loadData()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+  <div class="bar bar-subfooter row">
+    <div class="tabs-striped">
+      <div class="tabs">
+        <a class="tab-item active footer-notes" href="#/app/notes/{{notes.ClinicId}}">اخبار و مطالب</a>
+        <a class="tab-item footer-questions" href="#/app/questions/{{notes.ClinicId}}">سوالات</a>
+        <a class="tab-item footer-doctors" href="#/app/doctors/{{notes.ClinicId}}">پزشکان</a>
+        <a class="tab-item footer-popularnotes" href="#/app/popularnotes/{{notes.ClinicId}}">پر بینندهای امروز</a>
+      </div>
+    </div>
+  </div>
+  <div class="bar bar-footer auto-height">
+    <a href="#/app/demo" class="footer-newsletter">مجله رایگان ما را از دست ندهید</a>
+  </div>
+</ion-view>

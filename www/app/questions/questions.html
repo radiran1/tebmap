@@ -1,0 +1,26 @@
+<ion-view view-title="سوالات" ng-controller="QuestionsCtrl as questions">
+  <ion-content class="padding">
+    <ion-refresher on-refresh="questions.doRefresh()"></ion-refresher>
+    <ion-list>
+      <ion-item ng-repeat='question in questions.Questions' class="item-text-wrap" href="#/app/question/{{question.Id}}">
+        <h3 class="positive">{{question.SearchTitle}}</h3>
+        <p>
+          <a href="#/app/doctor/{{question.Doctor.Id}}" style="color:red;">{{question.Doctor.FullName}} : </a>{{question.Title | limitTo: 100}} {{ question.Title.length > 150 ? '&hellip;' : '' }}</p>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="questions.loadData()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+  <div class="bar bar-subfooter row">
+    <div class="tabs-striped">
+      <div class="tabs">
+        <a class="tab-item footer-notes" href="#/app/notes/{{questions.ClinicId}}">اخبار و مطالب</a>
+        <a class="tab-item active footer-questions" href="#/app/questions/{{questions.ClinicId}}">سوالات</a>
+        <a class="tab-item footer-doctors" href="#/app/doctors/{{questions.ClinicId}}">پزشکان</a>
+        <a class="tab-item footer-popularnotes" href="#/app/popularnotes/{{questions.ClinicId}}">پر بینندهای امروز</a>
+      </div>
+    </div>
+  </div>
+  <div class="bar bar-footer auto-height">
+    <a href="#/app/demo" class="footer-newsletter">مجله رایگان ما را از دست ندهید</a>
+  </div>
+</ion-view>

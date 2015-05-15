@@ -1,1 +1,152 @@
-/* Empty. Add your own CSS if you like */
+@font-face {
+  font-family: 'Elham';
+  src: url('../font/Elham.eot');
+  src: url('../font/Elham.eot?#iefix') format('embedded-opentype'),
+  url('../font/Elham.woff') format('woff'), url('../font/Elham.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ElhamForDigit';
+  src: url('../font/ElhamForDigit.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ElhamForEn';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../font/ElhamForEn.eot');
+  src: url('../font/ElhamForEn.eot?#iefix') format('embedded-opentype'),
+  url('../font/ElhamForEn.woff') format('woff'),
+  url('../font/ElhamForEn.ttf') format('truetype'),
+  url('../font/ElhamForEn.svg#robotoblack') format('svg');
+}
+
+body {
+  font-family: 'Elham' ,sans-serif;
+  font-size: 16px;
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+h1,h2,h3,h4,h5,h6{height: 20px;}
+
+a{
+  text-decoration: none;
+}
+
+a > img{
+  width:100%;
+  height: 100%;
+}
+.list{
+  direction:rtl;
+  font-size:11px;
+}
+
+.item h2,h2,h3,h4,h5,h6{height: 20px;}
+
+.footer-notes{
+  cursor: auto;
+  color: white;
+  background-color: #2F88AA;
+}
+.footer-questions{
+  cursor: auto;
+  color: white;
+  background-color: #C7B39B;
+}
+.footer-doctors{
+  cursor: auto;
+  color: white;
+  background-color: #7DCFFF;
+}
+.footer-popularnotes{
+  font-size:12px;
+  cursor: auto;
+  color: white;
+  background-color: #467394;
+}
+
+.footer-newsletter{
+  font: 18px 'Elham';
+  margin: auto;
+  cursor: auto;
+  text-align: center;
+  color: white;
+}
+
+.bar-footer{
+  margin: auto;
+  cursor: auto;
+  background-color: #2A4860;
+}
+.bar-subfooter{
+  padding: 0;
+  text-align: center;
+  height: 50px;
+  margin: auto;
+  cursor: auto;
+}
+
+/*-------------------------- Intro Style*/
+
+.slider {
+  position:absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.slider-slide > img{
+  width:100%;
+}
+.slider-slide {
+  background-color: #fff;
+  text-align: center;
+}
+
+.slider-pager {
+  margin:0px auto 45px;
+}
+
+.footer-intro{
+  font: 15px 'Elham';
+  height: 45px;
+  margin: auto;
+  cursor: auto;
+  text-align: center;
+  color: white;
+}
+/*-------------------------- inAppBrowser*/
+.demo-iframe-holder {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+}
+
+.demo-iframe-holder iframe {
+  height: 100%;
+  width: 100%;
+}
+.scroll-wrapper {
+
+  -webkit-overflow-scrolling: touch !important;
+  overflow-y: scroll !important;
+}
+
+.demo.scroll-wrapper iframe {
+  position:fixed;
+  top:0px;
+  left:0px;
+  bottom:0px;
+  right:0px;
+  width:100%;
+  height:100%;
+  border:none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  z-index:999999;
+}
