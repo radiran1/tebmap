@@ -1,21 +1,11 @@
-<ion-view view-title="" ng-controller="IntroCtrl as data">
-	<ion-pane>
-		<ion-slide-box on-slide-changed="data.slideHasChanged($index)" class="has-footer">
-			<ion-slide>
-				<img src="img/int1.jpg" alt="">
-			</ion-slide>
-			<ion-slide>
-				<img src="img/int2.jpg" alt="">
-			</ion-slide>
-			<ion-slide>
-				<img src="img/int3.jpg" alt="">
-			</ion-slide>
-			<ion-slide>
-				<img src="img/int4.jpg" alt="">
-			</ion-slide>
-			<ion-slide>
-				<img src="img/int5.jpg" alt="">
-			</ion-slide>
+<ion-view hide-nav-bar="true" ng-controller="IntroCtrl as data">
+	<ion-pane class="padding">
+		<ion-slide-box on-slide-changed="data.slideHasChanged($index)">
+			<ion-slide id="intro1"></ion-slide>
+			<ion-slide id="intro2"></ion-slide>
+			<ion-slide id="intro3"></ion-slide>
+			<ion-slide id="intro4"></ion-slide>
+			<ion-slide id="intro5"></ion-slide>
 		</ion-slide-box>
 	</ion-pane>
 	<ion-footer-bar>
