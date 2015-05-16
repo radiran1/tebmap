@@ -23,10 +23,12 @@
 					doctors.Take = data.Take;
 					doctors.Skip = data.Skip;
 					doctors.TotalItems = data.TotalItems;
-					if (doctors.Doctors == null) {
+					if (doctors.Doctors == null||doctors.Doctors.length===0) {
 						$scope.hasMoreData = false;
 
-					} else if (doctors.Doctors != null) {
+					} else if (doctors.Doctors != null && doctors.Doctors.length>0) {
+						// console.log(doctors.Doctors.length);
+						// console.log("True");
 						$scope.hasMoreData = true;
 					}
 					$scope.$broadcast('scroll.infiniteScrollComplete');

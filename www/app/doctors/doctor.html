@@ -12,13 +12,13 @@
         <h3>{{doctor.Email}} : ایمیل </h3>
       </div>
     </div>
-    <div class="list">
+    <div class="list" ng-show="doctor.Clinics.length>0">
       <h4 class="title positive">کلینیک های من</h4>
       <div ng-repeat="clinic in doctor.Clinics" class="item">
         <h3 style="height: 20px;">{{clinic.Address}}</h4><br/>
         </div>
       </div>
-      <div class="list">
+      <div class="list" ng-show="doctor.RelatedQuestions.length>0">
         <h4 class="title positive">سوالاتی که من جواب دادم</h4>
         <div ng-repeat="question in doctor.RelatedQuestions">
           <a href="http://www.alodoctor.ir/mobile/question/{{question.Id}}" class="item">

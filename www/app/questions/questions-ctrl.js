@@ -24,7 +24,7 @@
 					questions.Take = data.Take;
 					questions.Skip = data.Skip;
 					questions.TotalItems = data.TotalItems;
-					if (questions.Questions == null) {
+					if (questions.Questions == null||questions.Questions.length===0) {
 						$scope.hasMoreData = false;
 
 					} else if (questions.Questions != null) {

@@ -1,10 +1,10 @@
 (function () {
 	'use strict';
-	angular.module('tebmap').controller('DoctorCtrl', ['$stateParams', 'alodoctorApi', DoctorCtrl]);
-	function DoctorCtrl($stateParams, alodoctorApi) {
+	angular.module('tebmap').controller('DoctorCtrl', ['$stateParams', 'tebmapApi', DoctorCtrl]);
+	function DoctorCtrl($stateParams, tebmapApi) {
 		var doctor = this;
 		doctor.Id = Number($stateParams.Id);
-		alodoctorApi.getDoctor(doctor.Id).then(function (data) {
+		tebmapApi.getDoctor(doctor.Id).then(function (data) {
 			doctor.Avatar = data.Avatar;
 			doctor.FullName = data.FullName;
 			doctor.Email = data.Email;

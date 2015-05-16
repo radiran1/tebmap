@@ -24,7 +24,7 @@
 					notes.Take = data.Take;
 					notes.Skip = data.Skip;
 					notes.TotalItems = data.TotalItems;
-					if (notes.Notes == null) {
+					if (notes.Notes == null||notes.Notes.length===0) {
 						console.log("False");
 						$scope.hasMoreData = false;
 

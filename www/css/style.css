@@ -58,10 +58,10 @@ h1,h2,h3,h4,h5,h6{height: 20px;}
   text-align: center;
 }
 #menuFooter{
-    background-color: gray;
-    padding: 3px;
-    font-weight: bold;
-    color: whitesmoke;
+  background-color: gray;
+  padding: 3px;
+  font-weight: bold;
+  color: whitesmoke;
 }
 
 a{

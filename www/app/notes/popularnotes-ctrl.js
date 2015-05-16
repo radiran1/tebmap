@@ -26,7 +26,7 @@
 					popularnotes.Take = data.Take;
 					popularnotes.Skip = data.Skip;
 					popularnotes.TotalItems = data.TotalItems;
-					if (popularnotes.Notes == null) {
+					if (popularnotes.Notes == null||popularnotes.Notes.length===0) {
 						$scope.hasMoreData = false;
 
 					} else if (popularnotes.Notes != null) {
