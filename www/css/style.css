@@ -51,6 +51,19 @@ h1,h2,h3,h4,h5,h6{height: 20px;}
   text-align: center;
 }
 
+.menuimg{
+  width: 80%;
+  max-width: 350px;
+  margin: auto;
+  text-align: center;
+}
+#menuFooter{
+    background-color: gray;
+    padding: 3px;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
 a{
   text-decoration: none;
 }
