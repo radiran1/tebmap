@@ -1,4 +1,4 @@
-angular.module('tebmap', ['ngCordova','ionic'])
+angular.module('tebmap', ['ngCordova', 'ionic'])
 
   .run(function ($ionicPlatform) {
   $ionicPlatform.ready(function () {
@@ -80,6 +80,14 @@ angular.module('tebmap', ['ngCordova','ionic'])
     views: {
       'menuContent': {
         templateUrl: "app/questions/question.html"
+      }
+    }
+  })
+    .state('app.newsletter', {
+    url: "/newsletter",
+    views: {
+      'menuContent': {
+        templateUrl: "app/newsletter/newsletter.html"
       }
     }
   })

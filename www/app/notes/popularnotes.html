@@ -1,29 +1,29 @@
 <ion-view view-title="پر بیننده ترین های امروز" ng-controller="PopularNotesCtrl as popularnotes">
   <ion-content class="padding">
-    <!--    <div class="title" ng-show="!popularnotes.Notes.length">در حال موردی برای این کلینیک ثبت نگردیده است</div>-->
+    <!-- <div class="title" ng-show="!popularnotes.Notes.length">در حال موردی برای این کلینیک ثبت نگردیده است</div>-->
     <ion-refresher pulling-text="بکشید و رها کنید" on-refresh="popularnotes.doRefresh()"></ion-refresher>
     <ion-list>
       <ion-item ng-show="popularnotes.Notes.length" ng-repeat='popularnote in popularnotes.Notes' class="item-thumbnail-right item-text-wrap"
       href="#/app/note/{{popularnote.Id}}">
-      <img ng-src="{{popularnote.Image}}" alt="{{popularnote.Name}} Photo">
-      <h3 class="positive">{{popularnote.Name | limitTo:30}} {{popularnote.Name.length > 30 ? '&hellip;' : ''}}</h3>
-      <p>{{popularnote.Description | limitTo: 100}} {{ popularnote.Description.length > 150 ? '&hellip;' : '' }}</p>
-    </a>
-  </ion-item>
-</ion-list>
-<ion-infinite-scroll ng-if="hasMoreData" on-infinite="popularnotes.loadData()" distance="1%"></ion-infinite-scroll>
-</ion-content>
-<div class="bar bar-subfooter row">
-  <div class="tabs-striped">
-    <div class="tabs">
-      <a class="tab-item footer-notes" href="#/app/notes/{{popularnotes.ClinicId}}">اخبار و مطالب</a>
-      <a class="tab-item footer-questions" href="#/app/questions/{{popularnotes.ClinicId}}">سوالات</a>
-      <a class="tab-item footer-doctors" href="#/app/doctors/{{popularnotes.ClinicId}}">پزشکان</a>
-      <a class="tab-item active footer-popularnotes" href="#/app/popularnotes/{{popularnotes.ClinicId}}">پر بینندهای امروز</a>
+        <img ng-src="{{popularnote.Image}}" alt="{{popularnote.Name}} Photo">
+        <h3 class="positive">{{popularnote.Name | limitTo:30}} {{popularnote.Name.length > 30 ? '&hellip;' : ''}}</h3>
+        <p>{{popularnote.Description | limitTo: 100}} {{ popularnote.Description.length > 150 ? '&hellip;' : '' }}</p>
+        </a>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="hasMoreData" on-infinite="popularnotes.loadData()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+  <div class="bar bar-subfooter row">
+    <div class="tabs-striped">
+      <div class="tabs">
+        <a class="tab-item footer-notes" href="#/app/notes/{{popularnotes.ClinicId}}">اخبار و مطالب</a>
+        <a class="tab-item footer-questions" href="#/app/questions/{{popularnotes.ClinicId}}">سوالات</a>
+        <a class="tab-item footer-doctors" href="#/app/doctors/{{popularnotes.ClinicId}}">پزشکان</a>
+        <a class="tab-item active footer-popularnotes" href="#/app/popularnotes/{{popularnotes.ClinicId}}">پر بینندهای امروز</a>
+      </div>
     </div>
   </div>
-</div>
-<div class="bar bar-footer auto-height">
-  <a href="#/app/demo" class="footer-newsletter">مجله رایگان ما را از دست ندهید</a>
-</div>
+  <div class="bar bar-footer auto-height">
+    <a href="#/app/newsletter" class="footer-newsletter">مجله رایگان ما را از دست ندهید</a>
+  </div>
 </ion-view>

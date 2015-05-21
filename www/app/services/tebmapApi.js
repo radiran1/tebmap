@@ -43,6 +43,31 @@
 			return deferred.promise;
 		};
 
+		function getNote(Id) {
+			var deferred = $q.defer();
+			var request = JSON.parse('{"apprequest":{"ApiKey":"","DeviceId":"", "RequestDateTime":""},"Id":""}');
+			request.apprequest = apprequest;
+			request.Id = Id;
+			$ionicLoading.show({ template: '... در حال بارگذاری اطلاعات' });
+			$http({
+				url: 'http://api.alodoctor.ir/note/getnote',
+				method: 'POST',
+				data: JSON.stringify(request),
+				headers: { 'Content-Type': 'application/json;charset=utf-8' }
+			}).success(function (data) {
+				$timeout(function () {
+					$ionicLoading.hide();
+					deferred.resolve(data);
+				}, 3000);
+			}).error(function () {
+				$timeout(function () {
+					$ionicLoading.hide();
+					deferred.reject();
+				});
+			});
+			return deferred.promise;
+		}
+
 		function getPopularNotes(requestData) {
 			var deferred = $q.defer();
 			var request = JSON.parse('{"apprequest":{"ApiKey":"","DeviceId":"", "RequestDateTime":""},"ClinicId":"","Take":"","Skip":"","Term":"‌","Sort":"‌","SortType":""}');
@@ -103,11 +128,34 @@
 					$ionicLoading.hide();
 					deferred.reject();
 				});
-
 			});
-
 			return deferred.promise;
 		};
+
+		function getQuestion(Id) {
+			var deferred = $q.defer();
+			var request = JSON.parse('{"apprequest":{"ApiKey":"","DeviceId":"", "RequestDateTime":""},"Id":""}');
+			request.apprequest = apprequest;
+			request.Id = Id;
+			$ionicLoading.show({ template: '... در حال بارگذاری اطلاعات' });
+			$http({
+				url: 'http://api.alodoctor.ir/question/getquestion',
+				method: 'POST',
+				data: JSON.stringify(request),
+				headers: { 'Content-Type': 'application/json;charset=utf-8' }
+			}).success(function (data) {
+				$timeout(function () {
+					$ionicLoading.hide();
+					deferred.resolve(data);
+				}, 3000);
+			}).error(function () {
+				$timeout(function () {
+					$ionicLoading.hide();
+					deferred.reject();
+				});
+			});
+			return deferred.promise;
+		}
 
 		function getDoctors(requestData) {
 			var deferred = $q.defer();
@@ -135,9 +183,7 @@
 					$ionicLoading.hide();
 					deferred.reject();
 				});
-
 			});
-
 			return deferred.promise;
 		};
 
@@ -162,16 +208,16 @@
 					$ionicLoading.hide();
 					deferred.reject();
 				});
-
 			});
-
 			return deferred.promise;
 		};
 
 		return {
 			getNotes: getNotes,
+			getNote: getNote,
 			getPopularNotes: getPopularNotes,
 			getQuestions: getQuestions,
+			getQuestion: getQuestion,
 			getDoctors: getDoctors,
 			getDoctor: getDoctor,
 		};

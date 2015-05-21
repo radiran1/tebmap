@@ -7,25 +7,25 @@
     <ion-list>
       <ion-item ng-show="doctors.Doctors.length" ng-repeat='doctor in doctors.Doctors' class="item-thumbnail-left item-text-wrap"
       href="#/app/doctor/{{doctor.Id}}">
-      <img ng-src="{{doctor.Avatar}}" alt="{{doctor.FullName}}">
-      <h2 class="positive">{{doctor.FullName}}</h2>
-      <br/>
-      <h3>{{doctor.SpecialityName}}</h3>
-    </ion-item>
-  </ion-list>
-  <ion-infinite-scroll ng-if="hasMoreData" on-infinite="doctors.loadData()" icon="ion-loading-c" distance="1%"></ion-infinite-scroll>
-</ion-content>
-<div class="bar bar-subfooter row">
-  <div class="tabs-striped">
-    <div class="tabs">
-      <a class="tab-item footer-notes" href="#/app/notes/{{doctors.ClinicId}}">اخبار و مطالب</a>
-      <a class="tab-item footer-questions" href="#/app/questions/{{doctors.ClinicId}}">سوالات</a>
-      <a class="tab-item active footer-doctors" href="#/app/doctors/{{doctors.ClinicId}}">پزشکان</a>
-      <a class="tab-item footer-popularnotes" href="#/app/popularnotes/{{doctors.ClinicId}}">پر بینندهای امروز</a>
+        <img ng-src="{{doctor.Avatar}}" alt="{{doctor.FullName}}">
+        <h2 class="positive">{{doctor.FullName}}</h2>
+        <br/>
+        <h3>{{doctor.SpecialityName}}</h3>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="hasMoreData" on-infinite="doctors.loadData()" icon="ion-loading-c" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+  <div class="bar bar-subfooter row">
+    <div class="tabs-striped">
+      <div class="tabs">
+        <a class="tab-item footer-notes" href="#/app/notes/{{doctors.ClinicId}}">اخبار و مطالب</a>
+        <a class="tab-item footer-questions" href="#/app/questions/{{doctors.ClinicId}}">سوالات</a>
+        <a class="tab-item active footer-doctors" href="#/app/doctors/{{doctors.ClinicId}}">پزشکان</a>
+        <a class="tab-item footer-popularnotes" href="#/app/popularnotes/{{doctors.ClinicId}}">پر بینندهای امروز</a>
+      </div>
     </div>
   </div>
-</div>
-<div class="bar bar-footer auto-height">
-  <a href="#/app/demo" class="footer-newsletter">مجله رایگان ما را از دست ندهید</a>
-</div>
+  <div class="bar bar-footer auto-height">
+    <a href="#/app/newsletter" class="footer-newsletter">مجله رایگان ما را از دست ندهید</a>
+  </div>
 </ion-view>

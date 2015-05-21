@@ -1,5 +1,25 @@
-<ion-view title={{note.Id}} ng-controller="NoteCtrl as note">
+<ion-view title={{note.Name}} ng-controller="NoteCtrl as note">
   <ion-content class="has-header" padding="false">
-    Coming Soon...
+    <div class="list card">
+      <div class="item item-avatar">
+        <h2>{{note.Name}}</h2>
+        <p>{{note.Description}}</p>
+      </div>
+      <div class="item item-image">
+        <img src="{{note.Image}}" style="max-width: 700px;">
+      </div>
+      <div class="item item-body">
+        <p ng-bind-html="note.Body">
+          {{note.Body}}
+        </p>
+        <p style="float:left;margin: inherit;">
+             تعداد بازدید {{note.ClickCount}}
+        <i class="icon ion-eye balanced" style="font-size: 23px;"></i>
+        </p>
+      </div>
+      <div class="list" ng-repeat="tag in note.Tags">
+        <a class="item item-icon-right"> <i class="icon ion-pricetag"></i>{{tag.Name}}</a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

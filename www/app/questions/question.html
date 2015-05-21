@@ -1,5 +1,22 @@
-<ion-view title={{question.Id}} ng-controller="QuestionCtrl as question">
+<ion-view title={{question.SearchTitle}} ng-controller="QuestionCtrl as question">
   <ion-content class="has-header" padding="false">
-    Coming Soon...
+    <div class="list card">
+      <div class="item item-avatar item-text-wrap">
+        <h2>{{question.SearchTitle}}</h2>
+      </div>
+      <div class="item item-avatar item-text-wrap" style="background-color: burlywood;">
+        <h3>{{question.Title}}</h3>
+      </div>
+      <div class="item item-body">
+        <h2>پاسخ :</h2>
+        <p ng-bind-html="question.Answer">{{question.Answer}}</p>
+        <p style="float:left;margin: inherit;">تعداد بازدید {{question.ClickCount}}
+          <i class="icon ion-eye balanced" style="font-size: 23px;"></i>
+        </p>
+      </div>
+      <div class="list" ng-repeat="tag in question.Tags">
+        <a class="item item-icon-right"> <i class="icon ion-pricetag"></i>{{tag}}</a>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
