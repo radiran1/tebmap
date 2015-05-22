@@ -1,19 +1,20 @@
-<ion-view title="ثبت نام در خبر نامه" ng-controller="NewsletterCtrl as newsletter">
-    <ion-content class="has-header" padding="false">
-        <div class="list">
-            <div class="item item-input-inset">
-                <label class="item-input-wrapper">
-                    <input type="text" placeholder="ایمیل خود را وارد نمائید ...">
-                </label>
-            </div>
-            <li class="item item-toggle">HTML5
-                <label class="toggle toggle-assertive">
-                    <input type="checkbox">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </li>
-        </div>
-    </ion-content>
+<ion-view title="ثبت نام در خبر نامه" ng-controller="NewsletterCtrl as self">
+  <ion-content class="has-header" padding="false">
+    <form ng-submit="self.NewsletterRequest((newsletters|filter:{selected: true}))">
+      <ion-list class="list-inset">
+<h6 class="title">برای عضویت در خبرنامه ایمیل خود را در کادر پائین وارد کنید و حداقل یک خبرنامه را انتخاب نمائید</h6>
+        <ion-item class="item-input-inset">
+          <label class="item-input-wrapper" style="border-radius:5%;margin-left: 10px;height: 40px;">
+            <input type="email" ng-model="self.Email" placeholder="مثال sara@gmail.com">
+          </label>
+          <button class="button button-small button-assertive" type="submit" style="border-radius:5%;height:40px;">برایم بفرست</button>
+        </ion-item>
+        <ion-item ng-repeat="newsletter in newsletters" id="{{newsletter.Id}}">
+          <ion-checkbox ng-model="newsletter.selected">
+            <img src="{{newsletter.Image}}" alt="">
+          </ion-checkbox>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>
 </ion-view>

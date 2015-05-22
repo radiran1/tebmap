@@ -212,6 +212,32 @@
 			return deferred.promise;
 		};
 
+		function AddorUpdateSubscriber(subscriber) {
+			var deferred = $q.defer();
+			var request = JSON.parse('{"apprequest":{"ApiKey":"","DeviceId":"", "RequestDateTime":""},"Email":"","NewsletterIds":"","DeviceNo":"9774d56d682e549b"}');
+			request.apprequest = apprequest;
+			request.Email = subscriber.Email;
+			request.NewsletterIds = subscriber.NewsletterIds;
+			$ionicLoading.show({ template: '... در حال ارسال اطلاعات' });
+			$http({
+				url: 'http://api.alodoctor.ir/newsletter/register',
+				method: 'POST',
+				data: JSON.stringify(request),
+				headers: { 'Content-Type': 'application/json;charset=utf-8' }
+			}).success(function (data) {
+				$timeout(function () {
+					$ionicLoading.hide();
+					deferred.resolve(data);
+				}, 3000);
+			}).error(function () {
+				$timeout(function () {
+					$ionicLoading.hide();
+					deferred.reject();
+				});
+			});
+			return deferred.promise;
+		}
+
 		return {
 			getNotes: getNotes,
 			getNote: getNote,
@@ -220,6 +246,7 @@
 			getQuestion: getQuestion,
 			getDoctors: getDoctors,
 			getDoctor: getDoctor,
+			AddorUpdateSubscriber: AddorUpdateSubscriber
 		};
 	};
 })();
