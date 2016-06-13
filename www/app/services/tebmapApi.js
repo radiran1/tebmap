@@ -7,7 +7,7 @@
 		var requestDatetime = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
 
 		var apprequest = JSON.parse('{"ApiKey":"","DeviceId":"","RequestDateTime":""}');
-		apprequest.ApiKey = "WIG3BmFbjWBmwDZPE5E7b2bP6L6mGTsXArdiOegc4eU=";
+		apprequest.ApiKey = "";
 		apprequest.DeviceId = "9774d56d682e549c";
 		apprequest.RequestDateTime = requestDatetime;
 
